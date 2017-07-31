@@ -15,9 +15,9 @@ deploy_dir =
 apps = 
 css_ignore = 
 engine_type = compile
-ignore = 
+ignore = .git
 js_ignore = 
-optimization = simple
+optimization = advanced
 use_physics = True
 
 [deploy]
@@ -25,4 +25,6 @@ assets_path_dest = assets
 assets_path_prefix = assets
 ignore = 
 override = 
+
+[url_params]
 
