@@ -41,8 +41,8 @@ function init_cb(canvas_elem, success) {
         console.log("b4w init failure");
         return;
     }
-
-    m_preloader.create_preloader();
+	
+    // m_preloader.create_preloader({canvas_container_id: 'main_canvas_container', background_container_id: 'loader_bg_div'});
 
     // ignore right-click on the canvas element
     canvas_elem.oncontextmenu = function(e) {
@@ -58,6 +58,8 @@ function init_cb(canvas_elem, success) {
  * load the scene data
  */
 function load() {
+	var preloader_cont = document.getElementById("preloader_cont");
+    preloader_cont.style.visibility = "visible";
     m_data.load(APP_ASSETS_PATH + "project_guitar_beach.json", load_cb, preloader_cb);
 }
 
@@ -65,7 +67,17 @@ function load() {
  * update the app's preloader
  */
 function preloader_cb(percentage) {
-    m_preloader.update_preloader(percentage);
+    // m_preloader.update_preloader(percentage);
+	var prelod_dynamic_path = document.getElementById("prelod_dynamic_path");
+	var percantage_num      = prelod_dynamic_path.nextElementSibling;
+
+	prelod_dynamic_path.style.width = percentage + "%";
+	percantage_num.innerHTML = percentage + "%";	   
+	if (percentage == 100) {
+		var preloader_cont = document.getElementById("preloader_cont");
+		preloader_cont.style.visibility = "hidden";
+		return;
+	}
 }
 
 /**
